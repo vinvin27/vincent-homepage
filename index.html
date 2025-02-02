@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vincent Guesné - Développeur Web</title>
-  <!-- Lien vers une police Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+  <title>Vincent Guesné - Expert SEO & Développeur WordPress</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    /* Réinitialisation de quelques styles */
+    :root {
+      --primary-color: #1abc9c;
+      --secondary-color: #16a085;
+      --text-color: #333;
+      --bg-color: #f4f4f4;
+      --white: #fff;
+    }
     * {
       margin: 0;
       padding: 0;
@@ -15,143 +20,145 @@
     }
     body {
       font-family: 'Open Sans', sans-serif;
-      background: #f4f4f4;
-      color: #333;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       line-height: 1.6;
     }
-    a {
-      color: #1abc9c;
+    nav {
+      background: var(--white);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 1rem 0;
+    }
+    nav li {
+      margin: 0 1rem;
+    }
+    nav a {
+      font-weight: 600;
+      color: var(--text-color);
       text-decoration: none;
     }
-    a:hover {
-      text-decoration: underline;
-    }
     header {
-      background: #1abc9c;
-      color: #fff;
-      padding: 2rem 1rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--white);
+      padding: 3rem 1rem;
       text-align: center;
     }
     header h1 {
-      font-size: 2.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8rem;
       margin-bottom: 0.5rem;
     }
-    header p {
-      font-size: 1.2rem;
-    }
-    nav {
-      background: #16a085;
-      padding: 0.5rem;
-      text-align: center;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 1rem;
-      font-weight: 600;
-    }
-    section {
-      padding: 2rem 1rem;
-      max-width: 1000px;
-      margin: 0 auto;
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 2rem auto;
     }
     .card {
-      background: #fff;
-      padding: 1.5rem;
+      background: var(--white);
+      padding: 2rem;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       margin-bottom: 2rem;
     }
     .card h2 {
-      color: #1abc9c;
+      color: var(--primary-color);
       margin-bottom: 1rem;
+      font-family: 'Montserrat', sans-serif;
     }
-    /* Grille pour les projets */
-    .projects {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
+    .entreprises {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
     }
-    .projects .card {
-      flex: 1 1 calc(33.333% - 1rem);
-      min-width: 280px;
+    .entreprise-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
     }
-    footer {
-      background: #1abc9c;
-      color: #fff;
+    .entreprise-card:hover {
+      transform: translateY(-5px);
+    }
+    .entreprise-card header {
+      background: var(--primary-color);
+      color: var(--white);
+      padding: 1rem;
       text-align: center;
+    }
+    .entreprise-card .content {
       padding: 1rem;
     }
-    @media (max-width: 768px) {
-      .projects {
-        flex-direction: column;
-      }
+    footer {
+      background: var(--secondary-color);
+      color: var(--white);
+      text-align: center;
+      padding: 1rem;
     }
   </style>
 </head>
 <body>
-
-  <!-- En-tête -->
+  <nav>
+    <ul>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#entreprises">Mes entreprises</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
   <header>
     <h1>Vincent Guesné</h1>
-    <p>Développeur Web & Créatif</p>
+    <p>Expert SEO & Développeur WordPress - Montréal, Québec</p>
   </header>
-
-  <!-- Navigation -->
-  <nav>
-    <a href="#about">À propos</a>
-    <a href="#projects">Projets</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <!-- Section À propos -->
-  <section id="about">
-    <div class="card">
-      <h2>À propos de moi</h2>
-      <p>Je suis Vincent Guesné, passionné par le développement web et la création d’expériences digitales innovantes. Avec plusieurs années d’expérience, j’ai eu l’opportunité de travailler sur divers projets, allant de sites vitrines aux applications complexes. Mon objectif : concevoir des interfaces intuitives, esthétiques et performantes.</p>
-      <p>Pour en savoir plus, consultez mes sites :</p>
-      <ul>
-        <li><a href="https://vinvin.dev" target="_blank">vinvin.dev</a></li>
-        <li><a href="https://guesne.pro" target="_blank">guesne.pro</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Section Projets -->
-  <section id="projects">
-    <h2 style="text-align:center; margin-bottom:1.5rem; color:#1abc9c;">Projets récents</h2>
-    <div class="projects">
+  <div class="container">
+    <section id="apropos">
       <div class="card">
-        <h2>Projet 1</h2>
-        <p>Description du projet 1 : Un exemple de réalisation mettant en avant mon expertise en front-end et back-end, avec une approche responsive et moderne.</p>
+        <h2>À propos de moi</h2>
+        <p>Je suis Vincent Guesné, spécialiste du référencement naturel et expert en développement WordPress. Basé à Montréal, Québec, je conçois des solutions digitales performantes et sur-mesure pour optimiser la visibilité en ligne.</p>
       </div>
+    </section>
+    <section id="entreprises">
+      <h2>Mes entreprises</h2>
+      <div class="entreprises">
+        <div class="entreprise-card">
+          <header>Artiris</header>
+          <div class="content">
+            <p>Artiris capture la beauté unique de l’iris humain pour en faire une œuvre d’art personnalisée.</p>
+            <p><a href="https://artiris.com" target="_blank">Découvrir</a></p>
+          </div>
+        </div>
+        <div class="entreprise-card">
+          <header>Marabooth</header>
+          <div class="content">
+            <p>Marabooth est spécialisé dans la location de photobooths pour événements en Normandie.</p>
+            <p><a href="https://marabooth.ca" target="_blank">Découvrir</a></p>
+          </div>
+        </div>
+        <div class="entreprise-card">
+          <header>Loto-Caca</header>
+          <div class="content">
+            <p>Un concept humoristique où chaque participation est une surprise unique.</p>
+            <p><a href="https://loto-caca.com" target="_blank">Découvrir</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
       <div class="card">
-        <h2>Projet 2</h2>
-        <p>Description du projet 2 : Un projet innovant où j’ai intégré des technologies de pointe pour offrir une expérience utilisateur optimisée.</p>
+        <h2>Contact</h2>
+        <p>Email : <a href="mailto:vincent@guesne.pro">vincent@guesne.pro</a></p>
       </div>
-      <div class="card">
-        <h2>Projet 3</h2>
-        <p>Description du projet 3 : Une collaboration réussie permettant de répondre aux besoins spécifiques d’un client, tout en garantissant performance et design.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section Contact -->
-  <section id="contact">
-    <div class="card">
-      <h2>Contact</h2>
-      <p>Envie de collaborer ou de discuter d’un projet ? N’hésitez pas à me contacter :</p>
-      <ul>
-        <li>Email : <a href="mailto:vincent@guesne.pro">vincent@guesne.pro</a></li>
-        <li>Twitter : <a href="https://twitter.com/vincentguesne" target="_blank">@vincentguesne</a></li>
-        <li>LinkedIn : <a href="https://linkedin.com/in/vincentguesne" target="_blank">Vincent Guesné</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Pied de page -->
+    </section>
+  </div>
   <footer>
-    <p>&copy; 2025 Vincent Guesné. Tous droits réservés.</p>
+    <p>&copy; 2025 Vincent Guesné - Tous droits réservés.</p>
   </footer>
-
 </body>
 </html>
