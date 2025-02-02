@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vincent Guesné - Expert SEO & Développeur WordPress</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #1abc9c;
-      --secondary-color: #16a085;
+      --primary-color: #2c3e50;
+      --secondary-color: #1abc9c;
       --text-color: #333;
-      --bg-color: #f4f4f4;
+      --bg-color: #ecf0f1;
       --white: #fff;
     }
     * {
@@ -19,142 +19,127 @@
       box-sizing: border-box;
     }
     body {
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
       line-height: 1.6;
     }
     nav {
       background: var(--white);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 1000;
     }
-    nav ul {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      padding: 1rem 0;
-    }
-    nav li {
-      margin: 0 1rem;
-    }
     nav a {
+      margin: 0 1rem;
       font-weight: 600;
-      color: var(--text-color);
+      color: var(--primary-color);
       text-decoration: none;
     }
     header {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      background: var(--primary-color);
       color: var(--white);
-      padding: 3rem 1rem;
+      padding: 4rem 2rem;
       text-align: center;
     }
     header h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
+      font-size: 3rem;
+      font-weight: 600;
     }
     .container {
       width: 90%;
-      max-width: 1200px;
-      margin: 2rem auto;
+      max-width: 1100px;
+      margin: 3rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
     .card {
       background: var(--white);
       padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
     }
     .card h2 {
-      color: var(--primary-color);
+      color: var(--secondary-color);
       margin-bottom: 1rem;
-      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
     }
     .entreprises {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
     .entreprise-card {
       background: var(--white);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
       transition: transform 0.3s;
     }
     .entreprise-card:hover {
       transform: translateY(-5px);
     }
-    .entreprise-card header {
-      background: var(--primary-color);
-      color: var(--white);
-      padding: 1rem;
-      text-align: center;
-    }
-    .entreprise-card .content {
-      padding: 1rem;
+    .entreprise-card h3 {
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
     }
     footer {
-      background: var(--secondary-color);
+      background: var(--primary-color);
       color: var(--white);
       text-align: center;
       padding: 1rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
   <nav>
-    <ul>
-      <li><a href="#apropos">À propos</a></li>
-      <li><a href="#entreprises">Mes entreprises</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <a href="#apropos">À propos</a>
+    <a href="#entreprises">Mes entreprises</a>
+    <a href="#contact">Contact</a>
   </nav>
   <header>
     <h1>Vincent Guesné</h1>
     <p>Expert SEO & Développeur WordPress - Montréal, Québec</p>
   </header>
   <div class="container">
-    <section id="apropos">
-      <div class="card">
-        <h2>À propos de moi</h2>
-        <p>Je suis Vincent Guesné, spécialiste du référencement naturel et expert en développement WordPress. Basé à Montréal, Québec, je conçois des solutions digitales performantes et sur-mesure pour optimiser la visibilité en ligne.</p>
-      </div>
+    <section id="apropos" class="card">
+      <h2>À propos de moi</h2>
+      <p>Je suis Vincent Guesné, expert en SEO et en développement WordPress, passionné par la création de solutions digitales innovantes pour booster la visibilité en ligne.</p>
     </section>
     <section id="entreprises">
-      <h2>Mes entreprises</h2>
+      <h2 style="text-align:center;">Mes entreprises</h2>
       <div class="entreprises">
         <div class="entreprise-card">
-          <header>Artiris</header>
-          <div class="content">
-            <p>Artiris capture la beauté unique de l’iris humain pour en faire une œuvre d’art personnalisée.</p>
-            <p><a href="https://artiris.com" target="_blank">Découvrir</a></p>
-          </div>
+          <h3>Artiris</h3>
+          <p>Une expérience artistique unique basée sur la capture de l’iris de l’œil.</p>
+          <p><a href="https://artiris.com" target="_blank">Découvrir</a></p>
         </div>
         <div class="entreprise-card">
-          <header>Marabooth</header>
-          <div class="content">
-            <p>Marabooth est spécialisé dans la location de photobooths pour événements en Normandie.</p>
-            <p><a href="https://marabooth.ca" target="_blank">Découvrir</a></p>
-          </div>
+          <h3>Marabooth</h3>
+          <p>Location de photobooths haut de gamme pour des événements mémorables.</p>
+          <p><a href="https://marabooth.ca" target="_blank">Découvrir</a></p>
         </div>
         <div class="entreprise-card">
-          <header>Loto-Caca</header>
-          <div class="content">
-            <p>Un concept humoristique où chaque participation est une surprise unique.</p>
-            <p><a href="https://loto-caca.com" target="_blank">Découvrir</a></p>
-          </div>
+          <h3>Loto-Caca</h3>
+          <p>Un concept ludique et humoristique basé sur une loterie originale.</p>
+          <p><a href="https://loto-caca.com" target="_blank">Découvrir</a></p>
         </div>
       </div>
     </section>
-    <section id="contact">
-      <div class="card">
-        <h2>Contact</h2>
-        <p>Email : <a href="mailto:vincent@guesne.pro">vincent@guesne.pro</a></p>
-      </div>
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p>Email : <a href="mailto:vincent@guesne.pro">vincent@guesne.pro</a></p>
     </section>
   </div>
   <footer>
