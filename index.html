@@ -50,6 +50,10 @@
       font-size: 3rem;
       font-weight: 600;
     }
+    header p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
     .container {
       width: 90%;
       max-width: 1100px;
@@ -91,6 +95,57 @@
     }
     .entreprise-card h3 {
       color: var(--secondary-color);
+      margin-bottom: 0.5rem;
+    }
+    .entreprise-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      height: 200px;
+      object-fit: cover;
+    }
+    .btn-discover {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: var(--secondary-color);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .btn-discover:hover {
+      background-color: #16a085;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .service {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .service:hover {
+      transform: translateY(-5px);
+    }
+    .service img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    .service h3 {
+      color: var(--secondary-color);
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+    .service p {
       margin-bottom: 1rem;
     }
     footer {
@@ -106,6 +161,7 @@
   <nav>
     <a href="#apropos">À propos</a>
     <a href="#entreprises">Mes entreprises</a>
+    <a href="#services">Services</a>
     <a href="#contact">Contact</a>
   </nav>
   <header>
@@ -113,37 +169,95 @@
     <p>Expert SEO & Développeur WordPress - Montréal, Québec</p>
   </header>
   <div class="container">
+    <!-- Section À propos -->
     <section id="apropos" class="card">
       <h2>À propos de moi</h2>
-      <p>Je suis Vincent Guesné, expert en SEO et en développement WordPress, passionné par la création de solutions digitales innovantes pour booster la visibilité en ligne.</p>
+      <p>Je suis Vincent Guesné, expert en SEO et en développement WordPress, passionné par la création de solutions digitales innovantes pour booster la visibilité en ligne et accroître la présence web de mes clients. Avec plusieurs années d'expérience, j'ai accompagné de nombreuses entreprises à atteindre leurs objectifs grâce à des stratégies sur mesure et une approche personnalisée.</p>
     </section>
+
+    <!-- Section Entreprises -->
     <section id="entreprises">
       <h2 style="text-align:center;">Mes entreprises</h2>
       <div class="entreprises">
+        <!-- Artiris -->
         <div class="entreprise-card">
+          <img src="generated_artiris_photo.jpg" alt="Photographie d'iris dans un studio artistique" />
           <h3>Artiris</h3>
-          <p>Une expérience artistique unique basée sur la capture de l’iris de l’œil.</p>
-          <p><a href="https://artiris.com" target="_blank">Découvrir</a></p>
+          <p>Une expérience artistique unique basée sur la capture de l’iris de l’œil, permettant de créer des œuvres personnalisées reflétant la beauté de chaque regard.</p>
+          <p><a class="btn-discover" href="https://artiris.com" target="_blank">Découvrir</a></p>
         </div>
+        <!-- Marabooth -->
         <div class="entreprise-card">
+          <img src="generated_marabooth_photo.jpg" alt="Photobooth de Marabooth lors d'un événement festif" />
           <h3>Marabooth</h3>
-          <p>Location de photobooths haut de gamme pour des événements mémorables.</p>
-          <p><a href="https://marabooth.ca" target="_blank">Découvrir</a></p>
+          <p>Location de photobooths haut de gamme pour des événements mémorables, qu’il s’agisse de mariages, d’événements d’entreprise ou de soirées privées.</p>
+          <p><a class="btn-discover" href="https://marabooth.ca" target="_blank">Découvrir</a></p>
         </div>
+        <!-- Loto-Caca -->
         <div class="entreprise-card">
+          <img src="generated_lotocaca_photo.jpg" alt="Concept ludique et humoristique de Loto-Caca" />
           <h3>Loto-Caca</h3>
-          <p>Un concept ludique et humoristique basé sur une loterie originale.</p>
-          <p><a href="https://loto-caca.com" target="_blank">Découvrir</a></p>
+          <p>Un concept ludique et humoristique basé sur une loterie originale, parfait pour animer vos événements en apportant une touche de fun.</p>
+          <p><a class="btn-discover" href="https://loto-caca.com" target="_blank">Découvrir</a></p>
         </div>
       </div>
     </section>
+
+    <!-- Section Services (Photographie des yeux & Photobooth) -->
+    <section id="services" class="card">
+      <h2>Services phares à Montréal</h2>
+      <div class="services">
+        <!-- Photographie des yeux -->
+        <div class="service">
+          <img src="generated_eye_photography.jpg" alt="Exemple de photographie d'iris en gros plan" />
+          <h3>Photographie des yeux</h3>
+          <p>À Montréal, Artiris propose un concept unique : la photographie de votre iris, transformant la singularité de vos yeux en véritables œuvres d’art. Que ce soit pour offrir ou pour se faire plaisir, c’est un cadeau original et personnalisé.</p>
+          <p>Chaque séance est réalisée avec un matériel spécialisé et un savoir-faire unique, garantissant un rendu haute résolution.</p>
+        </div>
+        <!-- Location de Photobooth -->
+        <div class="service">
+          <img src="generated_photobooth.jpg" alt="Photobooth moderne installé dans un lieu d'événement" />
+          <h3>Location de Photobooth</h3>
+          <p>Avec Marabooth, découvrez l’excellence en matière de photobooth pour vos événements à Montréal. Nos cabines photos sont élégantes, simples d’utilisation et fournissent des clichés de qualité professionnelle.</p>
+          <p>Nous proposons différentes formules adaptées à chaque occasion : mariage, soirée d’entreprise, lancement de produit, etc. Faites vivre une expérience inoubliable à vos invités !</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOUVELLE SECTION : Location de Photobooth - 300 mots -->
+    <section id="location-photobooth" class="card">
+      <h2>Location de Photobooth : L'expérience Marabooth</h2>
+      <img src="generated_new_photobooth_section.jpg" alt="Installation d'un photobooth moderne de Marabooth" style="width:100%; border-radius:10px; margin-bottom:1rem;" />
+      <p>
+        La location de photobooth est aujourd’hui l’une des solutions les plus prisées pour dynamiser les événements et offrir aux invités des souvenirs inoubliables. Chez Marabooth, nous mettons un point d’honneur à proposer des cabines photo à la fois modernes, élégantes et faciles à utiliser. Notre objectif est de transformer chaque instant en moment de partage et de joie, que ce soit pour un mariage, un anniversaire, une soirée d’entreprise ou un festival. L’équipe de Marabooth est constituée de professionnels passionnés qui veillent au moindre détail : de l’installation du photobooth jusqu’à l’animation, nous nous assurons que tout se déroule à la perfection. Grâce à notre expertise, nous sommes en mesure d’adapter nos services à vos besoins spécifiques, en personnalisant par exemple les fonds, les cadres photo ou encore les accessoires proposés aux invités. Ainsi, chaque cliché devient une véritable pièce de collection, reflétant parfaitement l’ambiance et l’identité de votre événement.
+      </p>
+      <p>
+        L’avantage majeur de la location de photobooth réside dans la convivialité qu’elle apporte à toute célébration. Dès qu’une cabine est installée, elle suscite immédiatement la curiosité et invite les participants à se prendre au jeu, à immortaliser leur complicité et à créer des souvenirs uniques. Chez Marabooth, nous mettons également à disposition des solutions d’impression instantanée et de partage sur les réseaux sociaux, afin que chacun puisse conserver et diffuser ses clichés en temps réel. De plus, nous proposons un service client réactif et disponible, prêt à répondre à toutes vos questions et à intervenir rapidement en cas de besoin. Faire appel à Marabooth, c’est miser sur une expertise reconnue à Montréal et un savoir-faire forgé par l’expérience. Nous mettons tout en œuvre pour que votre événement soit à la hauteur de vos attentes et pour que vous puissiez profiter pleinement de chaque instant. Alors, si vous souhaitez offrir à vos convives une expérience photo originale et mémorable, la location de photobooth chez Marabooth est le choix idéal.
+      </p>
+    </section>
+
+    <!-- NOUVELLE SECTION : Photographie des iris à Montréal - 300 mots -->
+    <section id="photographie-iris" class="card">
+      <h2>Photographie des iris à Montréal : L'art selon Artiris</h2>
+      <img src="generated_iris_montreal_section.jpg" alt="Gros plan artistique d'un iris photographié par Artiris" style="width:100%; border-radius:10px; margin-bottom:1rem;" />
+      <p>
+        À Montréal, l’art de la photographie connaît un nouveau visage grâce à Artiris, une entreprise qui a su faire de la capture de l’iris un véritable chef-d’œuvre. L’iris, souvent qualifié de « fenêtre de l’âme », révèle une infinité de détails et de nuances lorsqu’il est photographié avec précision. Artiris l’a bien compris et met à votre disposition un service unique pour sublimer la beauté singulière de votre regard. En faisant appel à des techniques de pointe et à un savoir-faire méticuleux, l’équipe parvient à saisir chaque trait caractéristique de l’iris et à le transformer en une œuvre d’art personnalisée. Qu’il s’agisse de réaliser un portrait intime pour un usage personnel, ou de créer une pièce décorative hors du commun pour un proche, la photographie de l’iris permet de révéler des aspects cachés et fascinants de votre identité.
+      </p>
+      <p>
+        Artiris s’impose comme l’une des références en la matière à Montréal grâce à son approche artistique, mais aussi grâce à son respect pour la dimension humaine de chaque projet. Avant même de prendre la première photo, les professionnels d’Artiris prennent le temps d’échanger avec leurs clients, de comprendre leurs attentes et de les guider dans le choix du format, des couleurs ou des effets désirés. Chaque commande devient alors une collaboration où la créativité rencontre la technicité, où la sensibilité du client rencontre l’œil aguerri du photographe. De plus, la confidentialité et la sécurité des données sont au cœur des préoccupations de l’entreprise, garantissant à chaque client une tranquillité d’esprit totale. L’iris capturé par Artiris ne se limite pas à un simple cliché : il se transforme en une véritable pièce d’art, prête à orner vos murs ou à être offerte à un être cher. Pour tous ceux qui cherchent à immortaliser la magie d’un regard, la photographie des iris à Montréal avec Artiris est une expérience inoubliable, où l’esthétique et l’émotion se rejoignent pour donner naissance à un souvenir impérissable.
+      </p>
+    </section>
+
+    <!-- Section Contact -->
     <section id="contact" class="card">
       <h2>Contact</h2>
+      <p>Envie de collaborer ou besoin d’informations supplémentaires ? N’hésitez pas à me contacter :</p>
       <p>Email : <a href="mailto:vincent@guesne.pro">vincent@guesne.pro</a></p>
     </section>
   </div>
+
   <footer>
-    <p>&copy; 2025 Vincent Guesné - Tous droits réservés.</p>
+    <p>&copy; 2025 Vincent Guesné - Tous droits réservés. Montréal, Québec.</p>
   </footer>
 </body>
 </html>
