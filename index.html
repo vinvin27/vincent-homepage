@@ -4,14 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vincent Guesné - Expert SEO & Développeur WordPress</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Police + Icônes -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     :root {
-      --primary-color: #2c3e50;
-      --secondary-color: #1abc9c;
-      --text-color: #333;
-      --bg-color: #ecf0f1;
-      --white: #fff;
+      --primary-color: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary-color: #10b981;
+      --dark-color: #18181b;
+      --light-color: #f8fafc;
+      --text-color: #334155;
+      --bg-gradient: linear-gradient(120deg, #f0f9ff, #e0f2fe);
+      --card-gradient: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+      --hover-gradient: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(16,185,129,0.1));
+      --accent-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      --glass-bg: rgba(255, 255, 255, 0.7);
+      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      --glass-border: 1px solid rgba(255, 255, 255, 0.3);
+      --blur-effect: blur(12px);
     }
     * {
       margin: 0;
@@ -19,245 +30,842 @@
       box-sizing: border-box;
     }
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg-color);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-gradient);
       color: var(--text-color);
       line-height: 1.6;
+      overflow-x: hidden;
     }
+    /* Nav */
     nav {
-      background: var(--white);
       display: flex;
-      justify-content: center;
-      padding: 1rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      position: sticky;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
+      transition: all 0.3s ease;
+      background: transparent;
     }
-    nav a {
-      margin: 0 1rem;
-      font-weight: 600;
-      color: var(--primary-color);
+    nav.scrolled {
+      background: var(--glass-bg);
+      backdrop-filter: var(--blur-effect);
+      -webkit-backdrop-filter: var(--blur-effect);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 1rem 5%;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary-dark);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
+    .logo span {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-weight: 500;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color 0.3s;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: var(--accent-gradient);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover {
+      color: var(--primary-color);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .mobile-toggle {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--primary-color);
+      cursor: pointer;
+    }
+    /* Header (Héro) */
     header {
-      background: var(--primary-color);
-      color: var(--white);
-      padding: 4rem 2rem;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-content {
       text-align: center;
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      margin-top: 4rem;
     }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 600;
+    .header-content h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: fadeInUp 1s ease;
     }
-    header p {
-      margin-top: 1rem;
+    .header-content p {
       font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: var(--text-color);
+      animation: fadeInUp 1s ease 0.2s both;
     }
+    .btn {
+      display: inline-block;
+      background: var(--accent-gradient);
+      color: white;
+      font-weight: 600;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    }
+    .blob {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      filter: blur(70px);
+      opacity: 0.4;
+      z-index: 1;
+    }
+    .blob-1 {
+      background: #6366f1;
+      top: -200px;
+      right: -100px;
+      animation: float 15s infinite alternate;
+    }
+    .blob-2 {
+      background: #10b981;
+      bottom: -200px;
+      left: -100px;
+      animation: float 18s infinite alternate-reverse;
+    }
+    @keyframes float {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(40px, 60px);
+      }
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Container */
     .container {
       width: 90%;
-      max-width: 1100px;
-      margin: 3rem auto;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 5rem 0;
     }
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+    .section-header p {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+    .section-header::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent-gradient);
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Card / Stats */
     .card {
-      background: var(--white);
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+      background: var(--card-gradient);
+      backdrop-filter: var(--blur-effect);
+      -webkit-backdrop-filter: var(--blur-effect);
+      padding: 3rem;
+      border-radius: 24px;
+      box-shadow: var(--glass-shadow);
+      border: var(--glass-border);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 4rem;
     }
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.1);
     }
-    .card h2 {
-      color: var(--secondary-color);
-      margin-bottom: 1rem;
-      font-weight: 600;
+    .stats-section {
+      background: var(--glass-bg);
+      backdrop-filter: var(--blur-effect);
+      -webkit-backdrop-filter: var(--blur-effect);
+      padding: 4rem 2rem;
+      border-radius: 24px;
+      box-shadow: var(--glass-shadow);
+      margin: 3rem 0;
     }
-    .entreprises {
+    .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 2rem;
+      text-align: center;
+    }
+    .stat-item h4 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .stat-item p {
+      font-size: 1.1rem;
+      color: var(--text-color);
+    }
+    /* Grid: entreprises */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
     }
     .entreprise-card {
-      background: var(--white);
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.3s;
+      background: var(--card-gradient);
+      backdrop-filter: var(--blur-effect);
+      -webkit-backdrop-filter: var(--blur-effect);
+      border-radius: 24px;
+      box-shadow: var(--glass-shadow);
+      border: var(--glass-border);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
     .entreprise-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.15);
     }
-    .entreprise-card h3 {
-      color: var(--secondary-color);
-      margin-bottom: 0.5rem;
+    .entreprise-img {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
     }
-    .entreprise-card img {
+    .entreprise-img img {
       width: 100%;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-      height: 200px;
+      height: 100%;
       object-fit: cover;
+      transition: transform 0.5s;
     }
-    .btn-discover {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background-color: var(--secondary-color);
-      color: var(--white);
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: 600;
-      transition: background 0.3s;
+    .entreprise-card:hover .entreprise-img img {
+      transform: scale(1.05);
     }
-    .btn-discover:hover {
-      background-color: #16a085;
+    .entreprise-content {
+      padding: 2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
-    .services {
+    .entreprise-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .entreprise-content p {
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    .features {
+      margin: 1.5rem 0;
+    }
+    .feature {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+    .feature i {
+      color: var(--primary-color);
+      margin-right: 0.8rem;
+      font-size: 1.1rem;
+    }
+    .feature span {
+      font-size: 0.95rem;
+    }
+    /* Sections “détail” */
+    .detail-section {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      margin: 4rem 0;
     }
-    .service {
-      background: var(--white);
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    @media (min-width: 768px) {
+      .detail-section {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+      .detail-section:nth-child(even) .detail-content {
+        order: -1;
+      }
+    }
+    .detail-image {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--glass-shadow);
+    }
+    .detail-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s;
+    }
+    .detail-section:hover .detail-image img {
+      transform: scale(1.03);
+    }
+    .detail-content {
+      padding: 1rem;
+    }
+    .detail-content h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .detail-content p {
+      margin-bottom: 1rem;
+    }
+    /* Contact */
+    #contact {
+      background: var(--glass-bg);
+      backdrop-filter: var(--blur-effect);
+      -webkit-backdrop-filter: var(--blur-effect);
+      padding: 4rem;
+      border-radius: 24px;
+      box-shadow: var(--glass-shadow);
+      border: var(--glass-border);
+      text-align: center;
+      margin-top: 4rem;
+    }
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      width: 300px;
+      background: white;
+      border-radius: 16px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+    .contact-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    .contact-item i {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      background: var(--hover-gradient);
+      padding: 1rem;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: transform 0.3s;
     }
-    .service:hover {
-      transform: translateY(-5px);
+    .contact-item:hover i {
+      transform: rotate(15deg);
     }
-    .service img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 1rem;
+    .contact-item h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--dark-color);
     }
-    .service h3 {
-      color: var(--secondary-color);
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
+    .contact-item a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s;
     }
-    .service p {
-      margin-bottom: 1rem;
+    .contact-item a:hover {
+      color: var(--primary-dark);
     }
+    /* Footer */
     footer {
+      background: var(--dark-color);
+      color: white;
+      padding: 4rem 0 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      padding: 0 2rem;
+    }
+    .footer-blob {
+      position: absolute;
+      filter: blur(80px);
+      opacity: 0.1;
+    }
+    .footer-blob-1 {
       background: var(--primary-color);
-      color: var(--white);
-      text-align: center;
-      padding: 1rem;
+      width: 400px;
+      height: 400px;
+      top: -200px;
+      right: -100px;
+    }
+    .footer-blob-2 {
+      background: var(--secondary-color);
+      width: 350px;
+      height: 350px;
+      bottom: -150px;
+      left: -100px;
+    }
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover {
+      color: white;
+    }
+    .social-icons {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .social-icons a {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.8rem;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .social-icons a:hover {
+      color: white;
+      transform: translateY(-3px);
+    }
+    .copyright {
       margin-top: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      text-align: center;
+    }
+    /* Responsiveness */
+    @media (max-width: 768px) {
+      .mobile-toggle {
+        display: block;
+      }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 80%;
+        max-width: 400px;
+        background: var(--glass-bg);
+        backdrop-filter: var(--blur-effect);
+        -webkit-backdrop-filter: var(--blur-effect);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.3s ease;
+        box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        z-index: 1001;
+      }
+      .nav-links.active {
+        right: 0;
+      }
+      .nav-links a {
+        margin: 1rem 0;
+        font-size: 1.2rem;
+      }
+      .header-content h1 {
+        font-size: 3rem;
+      }
+      .detail-section {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 480px) {
+      .header-content h1 {
+        font-size: 2.2rem;
+      }
+      .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+      }
+      .section-header h2 {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="#apropos">À propos</a>
-    <a href="#entreprises">Mes entreprises</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
+  <!-- Navigation -->
+  <nav id="navbar">
+    <a href="#" class="logo"><i class="fas fa-code"></i> <span>Vincent Guesné</span></a>
+    <div class="nav-links" id="navLinks">
+      <button class="mobile-toggle close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
+      <a href="#apropos">À propos</a>
+      <a href="#entreprises">Mes entreprises</a>
+      <a href="#artiris">Artiris</a>
+      <a href="#marabooth">Marabooth</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
   </nav>
+  
+  <!-- Hero -->
   <header>
-    <h1>Vincent Guesné</h1>
-    <p>Expert SEO & Développeur WordPress - Montréal, Québec</p>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="header-content">
+      <h1>Vincent Guesné</h1>
+      <p>Expert SEO & Développeur WordPress basé à Montréal, créateur d'expériences digitales innovantes</p>
+      <a href="#contact" class="btn">Contactez-moi</a>
+    </div>
   </header>
+  
+  <!-- Contenu principal -->
   <div class="container">
     <!-- Section À propos -->
-    <section id="apropos" class="card">
-      <h2>À propos de moi</h2>
-      <p>Je suis Vincent Guesné, expert en SEO et en développement WordPress, passionné par la création de solutions digitales innovantes pour booster la visibilité en ligne et accroître la présence web de mes clients. Avec plusieurs années d'expérience, j'ai accompagné de nombreuses entreprises à atteindre leurs objectifs grâce à des stratégies sur mesure et une approche personnalisée.</p>
+    <section id="apropos" class="card fade-in">
+      <div class="section-header">
+        <h2>À propos de moi</h2>
+        <p>Mon parcours et ma passion pour le numérique</p>
+      </div>
+      <p>
+        Je suis Vincent Guesné, un expert en SEO et développeur WordPress basé à Montréal. Avec plus de 10 ans d'expérience dans le domaine du marketing numérique et du développement web, j'ai acquis une solide expertise dans la création de solutions digitales qui boostent la visibilité et la croissance des entreprises. 
+      </p>
+      <p>
+        Passionné par l'entrepreneuriat, j'ai créé plusieurs entreprises dans des domaines variés, toujours avec une vision commune : offrir des expériences uniques et mémorables grâce à la technologie. Mon approche est centrée sur l'innovation, la collaboration et la recherche constante de performances. Je suis en veille permanente sur les nouvelles tendances et les technologies émergentes pour apporter les meilleures solutions à mes clients.
+      </p>
+      <!-- Stats -->
+      <div class="stats-section fade-in">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <h4>10+</h4>
+            <p>Années d'expérience</p>
+          </div>
+          <div class="stat-item">
+            <h4>3</h4>
+            <p>Entreprises fondées</p>
+          </div>
+          <div class="stat-item">
+            <h4>150+</h4>
+            <p>Projets réalisés</p>
+          </div>
+          <div class="stat-item">
+            <h4>98%</h4>
+            <p>Clients satisfaits</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Section Entreprises -->
-    <section id="entreprises">
-      <h2 style="text-align:center;">Mes entreprises</h2>
-      <div class="entreprises">
+    <section id="entreprises" class="fade-in">
+      <div class="section-header">
+        <h2>Mes entreprises</h2>
+        <p>Des concepts innovants qui repoussent les limites de la créativité</p>
+      </div>
+      <div class="grid">
         <!-- Artiris -->
         <div class="entreprise-card">
-          <img src="generated_artiris_photo.jpg" alt="Photographie d'iris dans un studio artistique" />
-          <h3>Artiris</h3>
-          <p>Une expérience artistique unique basée sur la capture de l’iris de l’œil, permettant de créer des œuvres personnalisées reflétant la beauté de chaque regard.</p>
-          <p><a class="btn-discover" href="https://artiris.com" target="_blank">Découvrir</a></p>
+          <div class="entreprise-img">
+            <img src="/api/placeholder/600/400" alt="Artiris - Photographie d'iris">
+          </div>
+          <div class="entreprise-content">
+            <h3>Artiris</h3>
+            <p>Une expérience artistique unique basée sur la capture haute définition de l'iris de l'œil. Chaque œuvre est personnalisée et révèle la beauté cachée de vos yeux.</p>
+            <div class="features">
+              <div class="feature">
+                <i class="fas fa-camera-retro"></i>
+                <span>Photographie d'iris professionnelle</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-palette"></i>
+                <span>Œuvres d'art personnalisées</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-gift"></i>
+                <span>Cadeaux uniques et originaux</span>
+              </div>
+            </div>
+            <a href="#artiris" class="btn">Découvrir</a>
+          </div>
         </div>
         <!-- Marabooth -->
         <div class="entreprise-card">
-          <img src="generated_marabooth_photo.jpg" alt="Photobooth de Marabooth lors d'un événement festif" />
-          <h3>Marabooth</h3>
-          <p>Location de photobooths haut de gamme pour des événements mémorables, qu’il s’agisse de mariages, d’événements d’entreprise ou de soirées privées.</p>
-          <p><a class="btn-discover" href="https://marabooth.ca" target="_blank">Découvrir</a></p>
+          <div class="entreprise-img">
+            <img src="/api/placeholder/600/400" alt="Marabooth - Location de photobooth">
+          </div>
+          <div class="entreprise-content">
+            <h3>Marabooth</h3>
+            <p>Location de photobooths innovants et personnalisables pour rendre vos événements inoubliables. Une expérience interactive qui crée des souvenirs durables.</p>
+            <div class="features">
+              <div class="feature">
+                <i class="fas fa-camera"></i>
+                <span>Photobooth haut de gamme</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-print"></i>
+                <span>Impressions instantanées</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-users"></i>
+                <span>Service clé en main</span>
+              </div>
+            </div>
+            <a href="#marabooth" class="btn">Découvrir</a>
+          </div>
         </div>
         <!-- Loto-Caca -->
         <div class="entreprise-card">
-          <img src="generated_lotocaca_photo.jpg" alt="Concept ludique et humoristique de Loto-Caca" />
-          <h3>Loto-Caca</h3>
-          <p>Un concept ludique et humoristique basé sur une loterie originale, parfait pour animer vos événements en apportant une touche de fun.</p>
-          <p><a class="btn-discover" href="https://loto-caca.com" target="_blank">Découvrir</a></p>
+          <div class="entreprise-img">
+            <img src="/api/placeholder/600/400" alt="Loto-Caca - Loterie originale">
+          </div>
+          <div class="entreprise-content">
+            <h3>Loto-Caca</h3>
+            <p>Un concept ludique et humoristique basé sur une loterie originale. Apportez une touche de fun à vos événements et surprenez vos invités avec cette idée décalée.</p>
+            <div class="features">
+              <div class="feature">
+                <i class="fas fa-laugh-squint"></i>
+                <span>Divertissement garanti</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-ticket-alt"></i>
+                <span>Concept de loterie unique</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-smile"></i>
+                <span>Moments mémorables</span>
+              </div>
+            </div>
+            <a href="#" class="btn">Découvrir</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Section Services (Photographie des yeux & Photobooth) -->
-    <section id="services" class="card">
-      <h2>Services phares à Montréal</h2>
-      <div class="services">
-        <!-- Photographie des yeux -->
-        <div class="service">
-          <img src="generated_eye_photography.jpg" alt="Exemple de photographie d'iris en gros plan" />
-          <h3>Photographie des yeux</h3>
-          <p>À Montréal, Artiris propose un concept unique : la photographie de votre iris, transformant la singularité de vos yeux en véritables œuvres d’art. Que ce soit pour offrir ou pour se faire plaisir, c’est un cadeau original et personnalisé.</p>
-          <p>Chaque séance est réalisée avec un matériel spécialisé et un savoir-faire unique, garantissant un rendu haute résolution.</p>
-        </div>
-        <!-- Location de Photobooth -->
-        <div class="service">
-          <img src="generated_photobooth.jpg" alt="Photobooth moderne installé dans un lieu d'événement" />
-          <h3>Location de Photobooth</h3>
-          <p>Avec Marabooth, découvrez l’excellence en matière de photobooth pour vos événements à Montréal. Nos cabines photos sont élégantes, simples d’utilisation et fournissent des clichés de qualité professionnelle.</p>
-          <p>Nous proposons différentes formules adaptées à chaque occasion : mariage, soirée d’entreprise, lancement de produit, etc. Faites vivre une expérience inoubliable à vos invités !</p>
-        </div>
+    <!-- SECTION: Photographie des iris à Montréal (~300 mots) -->
+    <section id="artiris" class="detail-section fade-in">
+      <div class="detail-image">
+        <!-- Placeholder image 800x500 -->
+        <img src="/api/placeholder/800/500" alt="Photographie d'iris par Artiris">
+      </div>
+      <div class="detail-content">
+        <h3>Photographie des iris à Montréal : L'art selon Artiris</h3>
+        <p>
+          À Montréal, l’art de la photographie connaît un nouveau visage grâce à Artiris, une entreprise qui a su faire de la capture de l’iris un véritable chef-d’œuvre. L’iris, souvent qualifié de « fenêtre de l’âme », révèle une infinité de détails et de nuances lorsqu’il est photographié avec précision. Artiris l’a bien compris et met à votre disposition un service unique pour sublimer la beauté singulière de votre regard. En faisant appel à des techniques de pointe et à un savoir-faire méticuleux, l’équipe parvient à saisir chaque trait caractéristique de l’iris et à le transformer en une œuvre d’art personnalisée. Qu’il s’agisse de réaliser un portrait intime pour un usage personnel, ou de créer une pièce décorative hors du commun pour un proche, la photographie de l’iris permet de révéler des aspects cachés et fascinants de votre identité.
+        </p>
+        <p>
+          Artiris s’impose comme l’une des références en la matière à Montréal grâce à son approche artistique, mais aussi grâce à son respect pour la dimension humaine de chaque projet. Avant même de prendre la première photo, les professionnels d’Artiris prennent le temps d’échanger avec leurs clients, de comprendre leurs attentes et de les guider dans le choix du format, des couleurs ou des effets désirés. Chaque commande devient alors une collaboration où la créativité rencontre la technicité, où la sensibilité du client rencontre l’œil aguerri du photographe. De plus, la confidentialité et la sécurité des données sont au cœur des préoccupations de l’entreprise, garantissant à chaque client une tranquillité d’esprit totale. L’iris capturé par Artiris ne se limite pas à un simple cliché : il se transforme en une véritable pièce d’art, prête à orner vos murs ou à être offerte à un être cher. Pour tous ceux qui cherchent à immortaliser la magie d’un regard, la photographie des iris à Montréal avec Artiris est une expérience inoubliable, où l’esthétique et l’émotion se rejoignent pour donner naissance à un souvenir impérissable.
+        </p>
       </div>
     </section>
 
-    <!-- NOUVELLE SECTION : Location de Photobooth - 300 mots -->
-    <section id="location-photobooth" class="card">
-      <h2>Location de Photobooth : L'expérience Marabooth</h2>
-      <img src="generated_new_photobooth_section.jpg" alt="Installation d'un photobooth moderne de Marabooth" style="width:100%; border-radius:10px; margin-bottom:1rem;" />
-      <p>
-        La location de photobooth est aujourd’hui l’une des solutions les plus prisées pour dynamiser les événements et offrir aux invités des souvenirs inoubliables. Chez Marabooth, nous mettons un point d’honneur à proposer des cabines photo à la fois modernes, élégantes et faciles à utiliser. Notre objectif est de transformer chaque instant en moment de partage et de joie, que ce soit pour un mariage, un anniversaire, une soirée d’entreprise ou un festival. L’équipe de Marabooth est constituée de professionnels passionnés qui veillent au moindre détail : de l’installation du photobooth jusqu’à l’animation, nous nous assurons que tout se déroule à la perfection. Grâce à notre expertise, nous sommes en mesure d’adapter nos services à vos besoins spécifiques, en personnalisant par exemple les fonds, les cadres photo ou encore les accessoires proposés aux invités. Ainsi, chaque cliché devient une véritable pièce de collection, reflétant parfaitement l’ambiance et l’identité de votre événement.
-      </p>
-      <p>
-        L’avantage majeur de la location de photobooth réside dans la convivialité qu’elle apporte à toute célébration. Dès qu’une cabine est installée, elle suscite immédiatement la curiosité et invite les participants à se prendre au jeu, à immortaliser leur complicité et à créer des souvenirs uniques. Chez Marabooth, nous mettons également à disposition des solutions d’impression instantanée et de partage sur les réseaux sociaux, afin que chacun puisse conserver et diffuser ses clichés en temps réel. De plus, nous proposons un service client réactif et disponible, prêt à répondre à toutes vos questions et à intervenir rapidement en cas de besoin. Faire appel à Marabooth, c’est miser sur une expertise reconnue à Montréal et un savoir-faire forgé par l’expérience. Nous mettons tout en œuvre pour que votre événement soit à la hauteur de vos attentes et pour que vous puissiez profiter pleinement de chaque instant. Alors, si vous souhaitez offrir à vos convives une expérience photo originale et mémorable, la location de photobooth chez Marabooth est le choix idéal.
-      </p>
-    </section>
-
-    <!-- NOUVELLE SECTION : Photographie des iris à Montréal - 300 mots -->
-    <section id="photographie-iris" class="card">
-      <h2>Photographie des iris à Montréal : L'art selon Artiris</h2>
-      <img src="generated_iris_montreal_section.jpg" alt="Gros plan artistique d'un iris photographié par Artiris" style="width:100%; border-radius:10px; margin-bottom:1rem;" />
-      <p>
-        À Montréal, l’art de la photographie connaît un nouveau visage grâce à Artiris, une entreprise qui a su faire de la capture de l’iris un véritable chef-d’œuvre. L’iris, souvent qualifié de « fenêtre de l’âme », révèle une infinité de détails et de nuances lorsqu’il est photographié avec précision. Artiris l’a bien compris et met à votre disposition un service unique pour sublimer la beauté singulière de votre regard. En faisant appel à des techniques de pointe et à un savoir-faire méticuleux, l’équipe parvient à saisir chaque trait caractéristique de l’iris et à le transformer en une œuvre d’art personnalisée. Qu’il s’agisse de réaliser un portrait intime pour un usage personnel, ou de créer une pièce décorative hors du commun pour un proche, la photographie de l’iris permet de révéler des aspects cachés et fascinants de votre identité.
-      </p>
-      <p>
-        Artiris s’impose comme l’une des références en la matière à Montréal grâce à son approche artistique, mais aussi grâce à son respect pour la dimension humaine de chaque projet. Avant même de prendre la première photo, les professionnels d’Artiris prennent le temps d’échanger avec leurs clients, de comprendre leurs attentes et de les guider dans le choix du format, des couleurs ou des effets désirés. Chaque commande devient alors une collaboration où la créativité rencontre la technicité, où la sensibilité du client rencontre l’œil aguerri du photographe. De plus, la confidentialité et la sécurité des données sont au cœur des préoccupations de l’entreprise, garantissant à chaque client une tranquillité d’esprit totale. L’iris capturé par Artiris ne se limite pas à un simple cliché : il se transforme en une véritable pièce d’art, prête à orner vos murs ou à être offerte à un être cher. Pour tous ceux qui cherchent à immortaliser la magie d’un regard, la photographie des iris à Montréal avec Artiris est une expérience inoubliable, où l’esthétique et l’émotion se rejoignent pour donner naissance à un souvenir impérissable.
-      </p>
+    <!-- SECTION: Location de Photobooth (~300 mots) -->
+    <section id="marabooth" class="detail-section fade-in">
+      <div class="detail-content">
+        <h3>Location de Photobooth : L'expérience Marabooth</h3>
+        <p>
+          La location de photobooth est aujourd’hui l’une des solutions les plus prisées pour dynamiser les événements et offrir aux invités des souvenirs inoubliables. Chez Marabooth, nous mettons un point d’honneur à proposer des cabines photo modernes, élégantes et faciles à utiliser. Qu’il s’agisse d’un mariage, d’un anniversaire, d’une soirée d’entreprise ou d’un festival, notre objectif est de transformer chaque instant en un moment de partage et de joie. Notre équipe passionnée veille au moindre détail : de l’installation du photobooth à l’animation, nous garantissons une expérience sans stress et sur-mesure. Grâce à notre expertise, nous sommes en mesure d’adapter nos services à vos besoins spécifiques, en personnalisant les fonds, les cadres photo et les accessoires. Chaque cliché devient une véritable pièce de collection, reflétant parfaitement l’ambiance et l’identité de votre événement.
+        </p>
+        <p>
+          Au-delà de la convivialité, la valeur ajoutée d’un photobooth Marabooth réside dans son côté interactif et mémorable. Les participants sont immédiatement attirés par la cabine et se prennent au jeu, créant des souvenirs uniques et spontanés. Pour prolonger le plaisir, nous offrons des solutions d’impression instantanée, ainsi que la possibilité de partager les photos sur les réseaux sociaux en temps réel. De plus, notre équipe de support client reste à votre disposition pour répondre à vos questions et intervenir rapidement en cas de besoin. En choisissant Marabooth, vous misez sur une expertise reconnue à Montréal, un savoir-faire forgé par l’expérience et une volonté de fournir un service d’exception. Si vous souhaitez offrir à vos convives une animation photo originale, esthétique et divertissante, la location de photobooth avec Marabooth est le choix idéal pour marquer les esprits et faire de votre événement un moment inoubliable.
+        </p>
+      </div>
+      <div class="detail-image">
+        <!-- Placeholder image 800x500 -->
+        <img src="/api/placeholder/800/500" alt="Photobooth moderne de Marabooth">
+      </div>
     </section>
 
     <!-- Section Contact -->
-    <section id="contact" class="card">
-      <h2>Contact</h2>
-      <p>Envie de collaborer ou besoin d’informations supplémentaires ? N’hésitez pas à me contacter :</p>
-      <p>Email : <a href="mailto:vincent@guesne.pro">vincent@guesne.pro</a></p>
+    <section id="contact" class="fade-in">
+      <div class="section-header">
+        <h2>Contact</h2>
+        <p>Restons en contact pour concrétiser vos projets</p>
+      </div>
+      <div id="contact" class="card">
+        <p>
+          Vous avez un projet en tête, besoin de conseils ou souhaitez simplement en savoir plus ? Contactez-moi !
+        </p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <h3>Email</h3>
+            <p><a href="mailto:vincent@guesne.pro">vincent@guesne.pro</a></p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <h3>Téléphone</h3>
+            <p><a href="tel:1234567890">+1 (123) 456-7890</a></p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Localisation</h3>
+            <p>Montréal, Québec</p>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Vincent Guesné - Tous droits réservés. Montréal, Québec.</p>
+    <div class="footer-blob footer-blob-1"></div>
+    <div class="footer-blob footer-blob-2"></div>
+    <div class="footer-content">
+      <div class="footer-logo">Vincent Guesné</div>
+      <div class="footer-links">
+        <a href="#apropos">À propos</a>
+        <a href="#entreprises">Entreprises</a>
+        <a href="#artiris">Artiris</a>
+        <a href="#marabooth">Marabooth</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; 2025 Vincent Guesné - Tous droits réservés.
+      </div>
+    </div>
   </footer>
+
+  <!-- Script JS pour la nav en mobile + scroll -->
+  <script>
+    const navbar = document.getElementById('navbar');
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    const closeMenuBtn = document.getElementById('closeMenu');
+
+    // Gestion du menu mobile
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.add('active');
+    });
+    closeMenuBtn.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+
+    // Effet sticky + glass quand on scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      // Apparition des éléments .fade-in
+      document.querySelectorAll('.fade-in').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
