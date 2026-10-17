@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vincent Guesné (vinvin) – GEO, IA, formation et outils web à Montréal</title>
   <meta name="description" content="Développeur web indépendant à Montréal. Je travaille sur le GEO (être cité par les IA), l'IA au quotidien, la formation, et je bricole des outils web pour automatiser les processus.">
-  <link rel="canonical" href="https://vinvin.dev/">
+  <link rel="canonical" href="https://vincent.is-a.dev/">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vincent.is-a.dev/">
   <meta property="og:title" content="Vincent Guesné (vinvin) – GEO, IA, formation et outils web">
   <meta property="og:description" content="Notes de chantier d'un dev indépendant à Montréal : GEO, IA, formation et outils web sur mesure.">
-  <meta property="og:image" content="vincent.jpg">
+  <meta property="og:image" content="https://vincent.is-a.dev/vincent.jpg">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#0b0b0c">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +23,8 @@
     "@type": "Person",
     "name": "Vincent Guesné",
     "alternateName": "vinvin",
-    "url": "https://vinvin.dev",
-    "image": "vincent.jpg",
+    "url": "https://vincent.is-a.dev/",
+    "image": "https://vincent.is-a.dev/vincent.jpg",
     "jobTitle": "Développeur web indépendant",
     "email": "mailto:vincent@guesne.pro",
     "address": { "@type": "PostalAddress", "addressLocality": "Montréal", "addressRegion": "QC", "addressCountry": "CA" },
@@ -80,7 +83,7 @@
 
     /* Hero */
     .hero { padding: 9rem 0 5rem; }
-    .hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 4rem; align-items: center; }
+    .hero-grid { display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
     .kicker { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: .85rem; margin-bottom: 1.2rem; }
     h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; color: var(--white); line-height: 1.15; font-weight: 700; }
     h1 { font-size: clamp(2.4rem, 5vw, 3.9rem); margin-bottom: 1.5rem; }
@@ -94,15 +97,10 @@
     .btn:hover { transform: translateY(-2px); color: #111; }
     .btn.ghost { background: transparent; color: var(--white); border-color: var(--line); }
     .btn.ghost:hover { color: var(--white); border-color: var(--muted); }
-    .portrait { position: relative; }
     .portrait img {
-      width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: top;
-      border-radius: 10px; display: block; filter: grayscale(1) contrast(1.05);
-      border: 1px solid var(--line);
-    }
-    .portrait::after {
-      content: ''; position: absolute; inset: 14px -14px -14px 14px; z-index: -1;
-      border: 1px solid var(--accent); border-radius: 10px; opacity: .5;
+      width: 220px; height: 220px; border-radius: 50%; object-fit: cover; object-position: center 20%;
+      display: block; filter: grayscale(1) contrast(1.05);
+      border: 2px solid var(--accent); padding: 4px; background: var(--bg);
     }
 
     /* Sections */
@@ -153,7 +151,8 @@
 
     @media (max-width: 860px) {
       .hero-grid, .cols, .biz { grid-template-columns: 1fr; }
-      .portrait { max-width: 340px; order: -1; }
+      .portrait { order: -1; }
+      .portrait img { width: 150px; height: 150px; }
       .hero { padding-top: 7rem; }
       .menu-btn { display: block; }
       .nav-links {
@@ -195,7 +194,7 @@
           </div>
         </div>
         <div class="portrait">
-          <img src="vincent.jpg" width="1333" height="2000" alt="Portrait en noir et blanc de Vincent Guesné, souriant, en veston">
+          <img src="vincent-round.jpg" width="480" height="480" alt="Portrait en noir et blanc de Vincent Guesné, souriant, en veston">
         </div>
       </div>
     </header>
@@ -233,7 +232,7 @@
           <h2>Ce qui a marché, ce qui a cassé</h2>
         </div>
         <div class="lead">
-          <p>Sur vinvin.dev, j'écris sous forme de notes : un cas vécu, ce que j'ai essayé, comment je l'ai réparé. Pas de théorie, pas de définition de 3 paragraphes.</p>
+          <p>Sur vinvin.dev, j'écris sous forme de notes : un cas vécu, ce que j'ai essayé, comment je l'ai réparé.</p>
           <p>Tu y trouveras des articles sur le GEO, l'IA, la sécurité de sites WordPress et des petits outils que j'ai codés pour mes besoins (et ceux de mes clients).</p>
         </div>
         <div class="more">
